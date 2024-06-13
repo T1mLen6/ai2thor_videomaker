@@ -9,24 +9,20 @@ def create_video_from_images(folder_path, output_video_path, fps=1):
         key=lambda x: int(re.search(r'\d+', x).group())
     )
 
-
-    # Create full paths for the images
     image_paths = [os.path.join(folder_path, f"{filename}") for filename in image_files]
 
-    # Create a video clip from the images
     clip = ImageSequenceClip(image_paths, fps=fps)
 
-    # Write the video file
     clip.write_videofile(output_video_path, codec='libx264')
 
 if __name__ == "__main__":
     # Folder containing the modified images
-    folder_path = "/home/tim/SMART-LLM/logs/Chill_a_pan_and_take_it_out_of_the_fridge.__plans_0_06-04-2024-16-59-55/top_view"
+    folder_path = "/home/tim/SMART-LLM/logs/Place_a_AlarmClock_on_a_desk._plans_2_06-13-2024-14-41-49/top_view"
 
     # Output video file path
-    output_video_path = "output_video.mp4"
+    output_video_path = "FloorPlan310.tasks_1.compose_1.fintune_1_robot_1.mp4"
 
-    # Frames per second for the video
+
     fps = 2  # Change this to the desired frames per second
 
     create_video_from_images(folder_path, output_video_path, fps)
