@@ -28,6 +28,12 @@ class ImageEditorApp:
         self.next_image_button = tk.Button(root, text="Next Image", command=self.next_image)
         self.next_image_button.pack()
 
+        self.text_entry1 = tk.Entry(root, width=50)
+        self.text_entry1.pack()
+
+        self.add_text_button1 = tk.Button(root, text="Add Text", command=self.add_text1)
+        self.add_text_button1.pack()
+
 
         self.folder_path = None
         self.image_files = []
@@ -70,6 +76,20 @@ class ImageEditorApp:
             font_size = 25
             font_color = (0, 255, 0)
             text_position = (10, 10)  # Top left corner
+
+            font = ImageFont.truetype("DejaVuSans-Bold.ttf", font_size)
+
+
+            draw.text(text_position, text, font=font, fill=font_color)
+            self.display_image()
+
+    def add_text1(self):
+        text = self.text_entry1.get()
+        if self.image and text:
+            draw = ImageDraw.Draw(self.image)
+            font_size = 25
+            font_color = (0, 255, 0)
+            text_position = (10, 40)  # Top left corner
 
             font = ImageFont.truetype("DejaVuSans-Bold.ttf", font_size)
 
